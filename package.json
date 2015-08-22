@@ -1,0 +1,35 @@
+{
+  "name": "angular-photoswipe",
+  "version": "0.0.0",
+  "description": "An angular wrapper for PhotoSwipe",
+  "main": "angular-photoswipe.min.js",
+  "scripts": {
+    "test": "node_modules/.bin/grunt test",
+    "build": "node_modules/.bin/grunt build"
+  },
+  "keywords": [
+    "angular",
+    "PhotoSwipe",
+    "image",
+    "gallery"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "~0.11.0",
+    "grunt-contrib-uglify": "0.8.1",
+    "grunt-karma": "~0.10.1",
+    "jasmine-core": "2.2.0",
+    "karma": "~0.12.0",
+    "karma-coverage": "~0.2.0",
+    "karma-jasmine": "~0.3.5",
+    "karma-phantomjs-launcher": "~0.1.1",
+    "load-grunt-tasks": "3.1.0"
+  },
+  "author": "Massimiliano Sartoretto <massimilianosartoretto@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:m00s/angular-photoswipe.git"
+  },
+  "license": "MIT"
+}
