@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="../../bower_components/photoswipe/dist/photoswipe.css">
+    <link rel="stylesheet" href="../../bower_components/photoswipe/dist/default-skin/default-skin.css">
   </head>
   <body>
     <div ng-controller="demoCtrl">
+      <h1> {{ title }} </h1>
+
+      <ng-photoswipe
+          slides="slides"
+          options="opts">
+      <ng-photoswipe>
 
     </div>
-	    <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+      <script type="text/javascript" src="../../bower_components/photoswipe/dist/photoswipe.min.js"></script>
+      <script type="text/javascript" src="../../bower_components/photoswipe/dist/photoswipe-ui-default.min.js"></script>
+	    <script type="text/javascript" src="../../bower_components/angular/angular.js"></script>
+    	<script src="../../angular-photoswipe.js"></script>
     	<script src="./app.js"></script>
   </body>
 </html>

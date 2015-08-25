@@ -18,12 +18,19 @@
       .provider('ngPhotoswipe', ngPhotoswipeProvider);
 
     function ngPhotoswipeDirective() {
-      return {
-        restrict: 'A',
-        scope: {},
-        link: function (scope, element, attrs) {}
+        return {
+          restrict: 'AE',
+          scope: {
+            slides: '@',
+            options: '@',
+            uiClass: '@'
+          },
+          templateUrl: './ng-photoswipe.html'
+          link: function (scope, element, attrs) {
+            new PhotoSwipe(element, scope.uiClass || false, scope.slides, scope.options).init();
+          }
+        }
       }
-    }
 
     function ngPhotoswipeProvider() {
       var defaults = {};
@@ -52,10 +59,6 @@
       };
 
       this.$get = function() {
-        if(!config) {
-          throw new Error('ngPhotoswipe must be configured first.');
-        }
-
         var getConfig = (function() {
           return config;
         })();
