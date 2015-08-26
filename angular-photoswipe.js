@@ -14,23 +14,44 @@
 
     return angular
       .module('ngPhotoswipe', [])
-      .directive('ngPhotoswipe', ['ngPhotoswipe', ngPhotoswipeDirective])
+      .directive('ngPhotoswipe', ['ngPhotoswipe','$compile','$http','$templateCache', ngPhotoswipeDirective])
       .provider('ngPhotoswipe', ngPhotoswipeProvider);
 
-    function ngPhotoswipeDirective() {
-        return {
-          restrict: 'AE',
-          scope: {
-            slides: '@',
-            options: '@',
-            uiClass: '@'
-          },
-          templateUrl: './ng-photoswipe.html'
-          link: function (scope, element, attrs) {
-            new PhotoSwipe(element, scope.uiClass || false, scope.slides, scope.options).init();
+    function ngPhotoswipeDirective(ngPhotoswipe, $compile, $http, $templateCache) {
+      return {
+        restrict: 'AE',
+        replace: true,
+        scope: {
+          slides: '=',
+          options: '=',
+          uiClass: '@'
+        },
+        compile: function ($elm, $attrs) {
+          return {
+            pre: function ($scope, $elm, $attrs, controllers) {
+              $http
+                .get('../../ng-photoswipe.html', { cache: $templateCache })
+                .success(function(html) {
+                  //$elm.append($compile(html)($scope));
+                  var template = angular.element(html);
+                  var newElm = $compile(template)($scope);
+                  $elm.append(newElm);
+                });
+            },
+            post: function ($scope, $elm, $attrs, controllers) {
+              setTimeout(
+                function(){
+                  var pswpElement = document.querySelectorAll('.pswp')[0];
+                  console.log(pswpElement);
+                  console.log($scope.slides);
+                  var gallery = new PhotoSwipe(pswpElement, $scope.uiClass || false, $scope.slides, $scope.options);
+                  gallery.init();
+                }, 3000);
+            }
           }
         }
-      }
+      };
+    }
 
     function ngPhotoswipeProvider() {
       var defaults = {};
@@ -39,6 +60,7 @@
 
       var config;
 
+      /* jshint validthis: true */
       this.configure = function(params) {
         // Check if it is an `object`
         if (!(params instanceof Object)) {
@@ -58,6 +80,7 @@
         return config;
       };
 
+      /* jshint validthis: true */
       this.$get = function() {
         var getConfig = (function() {
           return config;
