@@ -23,8 +23,7 @@
         replace: true,
         scope: {
           slides: '=',
-          options: '=',
-          uiClass: '@'
+          options: '='
         },
         compile: function ($elm, $attrs) {
           return {
@@ -32,23 +31,22 @@
               $http
                 .get('../../ng-photoswipe.html', { cache: $templateCache })
                 .success(function(html) {
-                  //$elm.append($compile(html)($scope));
                   var template = angular.element(html);
                   var newElm = $compile(template)($scope);
                   $elm.append(newElm);
                 });
             },
             post: function ($scope, $elm, $attrs, controllers) {
-              setTimeout(
-                function(){
-                  var pswpElement = document.querySelectorAll('.pswp')[0];
-                  console.log(pswpElement);
-                  console.log($scope.slides);
-                  var gallery = new PhotoSwipe(pswpElement, $scope.uiClass || false, $scope.slides, $scope.options);
-                  gallery.init();
-                }, 3000);
+              console.log($scope.uiClass);
+              $scope.start = function(){
+                var pswpElement = document.querySelectorAll('.pswp')[0];
+                console.log(pswpElement);
+                console.log($scope.slides);
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default || false, $scope.slides, $scope.options);
+                gallery.init();
+              };
             }
-          }
+          };
         }
       };
     }
