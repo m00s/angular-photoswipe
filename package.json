@@ -1,6 +1,6 @@
 {
   "name": "ng-photoswipe",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An angular wrapper for PhotoSwipe",
   "main": "angular-photoswipe.min.js",
   "scripts": {
