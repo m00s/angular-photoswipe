@@ -2,7 +2,7 @@
 
 angular
   .module('demoApp', ['ngPhotoswipe'])
-  .controller('demoCtrl', function ($scope, ngPhotoswipe) {
+  .controller('demoCtrl', function ($scope) {
     $scope.title = 'ngPhotoswipe';
 
     $scope.slides = [{
