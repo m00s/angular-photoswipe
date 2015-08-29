@@ -30,21 +30,21 @@
         controllerAs: 'vm',
         bindToController: true
       };
-    }
 
-    function linkFn(scope, iElement, iAttrs, vm) {
-      $http
-        .get('../../ng-photoswipe.html', { cache: $templateCache })
-        .success(function(html) {
-          var template = angular.element(html);
-          iElement.append($compile(template)(scope));
-        });
+      function linkFn(scope, iElement, iAttrs) {
+        $http
+          .get('../../ng-photoswipe.html', { cache: $templateCache })
+          .success(function(html) {
+            var template = angular.element(html);
+            iElement.append($compile(template)(scope));
+          });
 
-      scope.start = function(){
-        var pswpElement = document.querySelectorAll('.pswp')[0];
-        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default || false, scope.slides, scope.options);
-        gallery.init();
-      };
+        scope.start = function(){
+          var pswpElement = document.querySelectorAll('.pswp')[0];
+          var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default || false, scope.slides, scope.options);
+          gallery.init();
+        };
+      }
     }
   }
 
