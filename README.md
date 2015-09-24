@@ -25,6 +25,17 @@ You can choose your preferred method of installation:
 * Through npm: `npm install ng-photoswipe --save`
 * Download from github: [angular-photoswipe.min.js](https://github.com/m00s/angular-photoswipe/blob/master/angular-photoswipe.min.js)
 
-Status
+Usage
 ------
-Library in development
+Inject `ngPhotoswipe` module and use the directive as below:
+
+``` html
+<ng-photoswipe
+    slides="slides"
+    options="opts">
+</ng-photoswipe>
+```
+
+where `slides` is an object describing the images and `options` is an object for the configuration.
+
+(For further infos follow the [Official docs](http://photoswipe.com/documentation/options.html))
