@@ -27,7 +27,14 @@ You can choose your preferred method of installation:
 
 Usage
 ------
-Inject `ngPhotoswipe` module and use the directive as below:
+Inject `ngPhotoswipe` module in your application with:
+
+``` js
+angular
+  .module('myApp', ['ngPhotoswipe'])
+```
+
+and use the directive as below:
 
 ``` html
 <ng-photoswipe
@@ -39,3 +46,23 @@ Inject `ngPhotoswipe` module and use the directive as below:
 where `slides` is an object describing the images and `options` is an object for the configuration.
 
 (For further infos follow the [Official docs](http://photoswipe.com/documentation/options.html))
+
+Changelog
+------
+### v0.0.4 (Aug 29, 2015)
+* Move link definition inside directive block
+
+### v0.0.3 (Aug 27, 2015)
+
+* Update demoApp
+* Better code style
+
+### v0.0.2 (Aug 27, 2015)
+
+* Add JP's jshint
+* External template compilation
+
+### v0.0.1 (Aug 26, 2015)
+
+* Add directive template
+* Add ngPhotoswipeProvider
