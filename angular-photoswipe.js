@@ -26,9 +26,7 @@
           slides: '=',
           options: '='
         },
-        link: linkFn,
-        controllerAs: 'vm',
-        bindToController: true
+        link: linkFn
       };
 
       function linkFn(scope, iElement, iAttrs) {
@@ -39,7 +37,7 @@
             iElement.append($compile(template)(scope));
           });
 
-        scope.start = function(){
+        scope.start = function() {
           var pswpElement = document.querySelectorAll('.pswp')[0];
           var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default || false, scope.slides, scope.options);
           gallery.init();
