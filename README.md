@@ -49,6 +49,13 @@ where `slides` is an object describing the images and `options` is an object for
 
 Changelog
 ------
+### v0.0.6 (Dec 11, 2015)
+* Fix DI bug due to undefined controller
+* Improved jshint rules
+
+### v0.0.5 (Dec 08, 2015)
+* Update bower configuration
+
 ### v0.0.4 (Aug 29, 2015)
 * Move link definition inside directive block
 
