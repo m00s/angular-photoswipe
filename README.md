@@ -49,9 +49,12 @@ where `slides` is an object describing the images and `options` is an object for
 
 Changelog
 ------
+### v0.0.7 (Dec 18, 2015)
+* Better grunt build
+
 ### v0.0.6 (Dec 11, 2015)
 * Fix DI bug due to undefined controller
-* Improved jshint rules
+* Improve jshint rules
 
 ### v0.0.5 (Dec 08, 2015)
 * Update bower configuration
