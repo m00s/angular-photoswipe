@@ -39,11 +39,14 @@ and use the directive as below:
 ``` html
 <ng-photoswipe
     slides="slides"
-    options="opts">
+    options="opts"
+    template="'template.html'">
 </ng-photoswipe>
 ```
 
 where `slides` is an object describing the images and `options` is an object for the configuration.
+
+You can also provide your own `template` that will override the default one.
 
 (For further infos follow the [Official docs](http://photoswipe.com/documentation/options.html))
 
@@ -51,6 +54,7 @@ Changelog
 ------
 ### v0.0.7 (Dec 18, 2015)
 * Better grunt build
+* Add *template* attribute to override the default html template
 
 ### v0.0.6 (Dec 11, 2015)
 * Fix DI bug due to undefined controller
