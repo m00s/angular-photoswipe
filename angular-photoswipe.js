@@ -16,22 +16,23 @@
       .module('ngPhotoswipe', [])
       .directive('ngPhotoswipe', ngPhotoswipeDirective);
 
-    ngPhotoswipeDirective.$inject = ['$compile','$http','$templateCache'];
-
     function ngPhotoswipeDirective($compile, $http, $templateCache) {
       return {
         restrict: 'AE',
         replace: true,
         scope: {
           slides: '=',
-          options: '='
+          options: '=',
+          template: '@'
         },
         link: linkFn
       };
 
       function linkFn(scope, iElement, iAttrs) {
+        scope.template = scope.template || 'views/ng-photoswipe.html';
+
         $http
-          .get('../../ng-photoswipe.html', { cache: $templateCache })
+          .get(scope.template, { cache: $templateCache })
           .success(function(html) {
             var template = angular.element(html);
             iElement.append($compile(template)(scope));
