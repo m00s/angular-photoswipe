@@ -23,13 +23,18 @@
         scope: {
           slides: '=',
           options: '=',
-          template: '@'
+          template: '@',
+          startOn: '@'
         },
         link: linkFn
       };
 
       function linkFn(scope, iElement, iAttrs) {
         scope.template = scope.template || 'views/ng-photoswipe.html';
+
+        scope.$on(scope.startOn, function () {
+          scope.start();
+        });
 
         $http
           .get(scope.template, { cache: $templateCache })
