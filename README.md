@@ -39,19 +39,27 @@ and use the directive as below:
 ``` html
 <ng-photoswipe
     slides="slides"
-    options="opts"
-    template="'template.html'">
+    start-on="{{ bindToSomething || 'eventName' }}"
+    template="'template.html'"
+    options="opts">
 </ng-photoswipe>
 ```
 
 where `slides` is an object describing the images and `options` is an object for the configuration.
 
+The `start-on` attribute tells the directive to listen for the specified event to start the gallery,
+(Helpful to start Photoswipe with a external event).
+ 
 You can also provide your own `template` that will override the default one.
 
 (For further infos follow the [Official docs](http://photoswipe.com/documentation/options.html))
 
 Changelog
 ------
+### v0.0.8 (Dec 28, 2015)
+* Add custom event to manually start Photoswipe
+* Better demo
+
 ### v0.0.7 (Dec 18, 2015)
 * Better grunt build
 * Add *template* attribute to override the default html template
