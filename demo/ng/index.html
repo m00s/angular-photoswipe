@@ -5,19 +5,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.0/default-skin/default-skin.css">
   </head>
   <body>
-    <div ng-controller="demoCtrl">
-      <h1> {{ title }} </h1>
+    <div ng-controller="demoCtrl as vm">
+        <h1> {{ vm.title }} </h1>
 
-      <ng-photoswipe
-          slides="slides"
-          options="opts">
-      </ng-photoswipe>
+        <button ng-click="vm.showGallery()"> Show Gallery (external btn) </button>
+
+        <ul class="slide-list">
+           <li ng-repeat="s in vm.slides track by $index" ng-click="vm.showGallery($index)">
+               <img ng-src="{{ s.src }}" alt="slide number {{ $index }}" />
+           </li>
+        </ul>
+
+        <div ng-photoswipe slides="vm.slides" start-on="{{ vm.startEvent }}" options="vm.opts"></div>
 
     </div>
 	    <script type="text/javascript" src="https://code.angularjs.org/1.4.0/angular.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.0/photoswipe.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.0/photoswipe-ui-default.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.0/photoswipe.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.0/photoswipe-ui-default.min.js"></script>
     	<script src="../../angular-photoswipe.min.js"></script>
     	<script src="./app.js"></script>
   </body>
 </html>
+
+<style>
+
+    button {
+        margin-bottom: 20px;
+        padding: 5px 10px;
+    }
+
+    .slide-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .slide-list > li {
+        display: inline;
+    }
+
+    .slide-list > li:hover {
+        cursor: pointer;
+    }
+
+    .slide-list > li > img {
+        width: 300px;
+        height: 300px;
+    }
+
+</style>
