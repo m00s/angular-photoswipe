@@ -1,4 +1,4 @@
-# Angular PhotoSwipe
+# Angular PhotoSwipe [Live Demo](http://m00s.github.io/angular-photoswipe/)
 
 AngularJS directive for [PhotoSwipe](http://photoswipe.com/).
 
