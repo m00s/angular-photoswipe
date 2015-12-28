@@ -47,7 +47,7 @@ and use the directive as below:
 
 where `slides` is an object describing the images and `options` is an object for the configuration.
 
-The `start-on` attribute tells the directive to listen for the specified event to start the gallery,
+The `start-on` attribute tells the directive to listen for the specified event to start the gallery.
 (Helpful to start Photoswipe with a external event).
  
 You can also provide your own `template` that will override the default one.
