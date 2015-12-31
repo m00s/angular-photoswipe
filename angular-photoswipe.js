@@ -1,5 +1,5 @@
 /*
-	angular-photoswipe v0.0.7
+	angular-photoswipe v0.0.4
 	(c) 2015 Massimiliano Sartoretto <massimilianosartoretto@gmail.com>
 	License: MIT
 */
@@ -24,30 +24,62 @@
           slides: '=',
           options: '=',
           template: '@',
-          startOn: '@'
+          open: '=',//lets us put a watch on when the open changes'
+          onClose: '&',
+          extensions:'=?'
         },
         link: linkFn
       };
-
+      
       function linkFn(scope, iElement, iAttrs) {
         scope.template = scope.template || 'views/ng-photoswipe.html';
-
-        scope.$on(scope.startOn, function () {
-          scope.start();
-        });
-
         $http
           .get(scope.template, { cache: $templateCache })
           .success(function(html) {
             var template = angular.element(html);
             iElement.append($compile(template)(scope));
           });
-
-        scope.start = function() {
-          var pswpElement = document.querySelectorAll('.pswp')[0];
-          var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default || false, scope.slides, scope.options);
-          gallery.init();
+        
+        //var gallery;
+        scope.start = function () {
+            scope.open = true;
+            startGallery();
         };
+        var startGallery = function () {
+            var pswpElement = document.querySelectorAll('.pswp')[0];
+            scope.gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default || false, scope.slides, scope.options);
+            scope.gallery.init();
+            scope.item = scope.gallery.currItem;
+            scope.gallery.listen('destroy', function () {
+                if (typeof scope.onClose === 'function') {
+                    scope.onClose();
+                }
+                
+            });
+            scope.gallery.listen('afterChange', function () {
+                
+                scope.item = scope.gallery.currItem;
+                if (!scope.$$phase) {
+                    scope.$apply();
+                }
+                
+            });
+        }
+        scope.$watch('open', function (nval, oval) {
+            if (nval != oval) {
+                if (nval) {
+                    startGallery();
+                }
+            } else if (!nval && scope.gallery) {
+                //close it
+                scope.gallery.close();
+                scope.gallery = null;
+            }
+        });
+        scope.$on('destroy', function () {
+            scope.gallery = null;
+        });
+        
       }
     }
   }
