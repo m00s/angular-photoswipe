@@ -53,16 +53,15 @@
           scope.item = scope.gallery.currItem;
 
           scope.gallery.listen('destroy', function () {
-            if (typeof scope.onClose === 'function') {
+            scope.safeApply(function () {
               scope.onClose();
-            }
+            });
           });
 
           scope.gallery.listen('afterChange', function () {
-            scope.item = scope.gallery.currItem;
-            if (!scope.$$phase) {
-              scope.$apply();
-            }
+            scope.safeApply(function () {
+              scope.item = scope.gallery.currItem;
+            });
           });
         }
 
@@ -89,7 +88,7 @@
         };
 
         scope.$on('destroy', function () {
-            scope.gallery = null;
+          scope.gallery = null;
         });
       }
     }
