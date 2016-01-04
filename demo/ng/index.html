@@ -16,7 +16,7 @@
            </li>
         </ul>
 
-        <div ng-photoswipe slides="vm.slides" start-on="{{ vm.startEvent }}" options="vm.opts"></div>
+        <div ng-photoswipe slides="vm.slides" open="vm.open" on-close="vm.closeGallery()" options="vm.opts"></div>
 
     </div>
 	    <script type="text/javascript" src="https://code.angularjs.org/1.4.0/angular.min.js"></script>

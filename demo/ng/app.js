@@ -4,11 +4,10 @@ angular
   .module('demoApp', ['ngPhotoswipe'])
   .controller('demoCtrl', demoCtrlFn);
 
-function demoCtrlFn($scope) {
+function demoCtrlFn() {
   var vm = this;
 
   vm.title = 'ngPhotoswipe';
-  vm.startEvent = 'START_GALLERY';
 
   vm.opts = {
     index: 0
@@ -42,8 +41,12 @@ function demoCtrlFn($scope) {
 
   vm.showGallery = function (i) {
     vm.opts.index = i || vm.opts.index;
-    $scope.$broadcast(vm.startEvent);
+    vm.open = true;
   };
+
+  vm.closeGallery = function () {
+    vm.open = false;
+  }
 }
 
 angular.element(document).ready(function() {
