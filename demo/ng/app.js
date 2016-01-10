@@ -40,7 +40,9 @@ function demoCtrlFn() {
     }];
 
   vm.showGallery = function (i) {
-    vm.opts.index = i || vm.opts.index;
+    if(angular.isDefined(i)) {
+      vm.opts.index = i;
+    }
     vm.open = true;
   };
 
