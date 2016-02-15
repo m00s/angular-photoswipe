@@ -49,13 +49,17 @@ where `slides` is an object describing the images and `options` is an object for
 
 The `start-on` attribute tells the directive to listen for the specified event to start the gallery.
 (Helpful to start Photoswipe with a external event).
- 
+
 You can also provide your own `template` that will override the default one.
 
 (For further infos follow the [Official docs](http://photoswipe.com/documentation/options.html))
 
 Changelog
 ------
+### v0.0.9 (Feb 15, 2016)
+* Add ngTemplates grunt task
+* Fix npm package version
+
 ### v0.0.8 (Dec 28, 2015)
 * Add custom event to manually start Photoswipe
 * Better demo
