@@ -21,15 +21,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    concat: {
-      options: {
-        separator: ';',
-      },
-      dist: {
-        src: ['angular-photoswipe.annotated.js', 'templates.js'],
-        dest: 'angular-photoswipe.tpl.js',
-      },
-    },
     ngAnnotate: {
       options: {
           singleQuotes: true,
