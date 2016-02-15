@@ -30,7 +30,7 @@
         },
         link: linkFn
       };
-      
+
       function linkFn(scope, iElement, iAttrs) {
         scope.template = scope.template || 'views/ng-photoswipe.html';
 
@@ -63,7 +63,7 @@
               scope.item = scope.gallery.currItem;
             });
           });
-        }
+        };
 
         scope.$watch('open', function (nVal, oVal) {
           if (nVal != oVal) {
