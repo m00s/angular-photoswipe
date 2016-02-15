@@ -21,15 +21,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    concat: {
-      options: {
-        separator: ';',
-      },
-      dist: {
-        src: ['a.js', 'templates.js'],
-        dest: 'aabb.js',
-      },
-    },
     ngAnnotate: {
       options: {
           singleQuotes: true,
@@ -46,7 +37,10 @@ module.exports = function(grunt) {
       src: ['angular-photoswipe.js', 'tests.js']
     },
     clean: {
-      release: ['angular-photoswipe.annotated.js','templates.js']
+      release: [
+        'angular-photoswipe.annotated.js',
+        'templates.js'
+      ]
     },
     ngtemplates:  {
       app:  {
@@ -69,6 +63,5 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('test', ['jshint','karma']);
-  grunt.registerTask('default', ['jshint']);
-  grunt.registerTask('build', ['ngtemplates','ngAnnotate','uglify','clean']);
+  grunt.registerTask('default', ['ngtemplates','ngAnnotate','uglify','clean']);
 };

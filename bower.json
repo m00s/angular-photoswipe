@@ -5,7 +5,10 @@
     "Massimiliano Sartoretto <massimilianosartoretto@gmail.com>"
   ],
   "description": "An angular wrapper for PhotoSwipe",
-  "main": "angular-photoswipe.min.js",
+  "main": [
+    "angular-photoswipe.min.js",
+    "views/ng-photoswipe.html"
+  ],
   "dependencies": {
     "angular": ">=1.3.0",
     "photoswipe": "~4.1.0"

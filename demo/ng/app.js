@@ -48,7 +48,7 @@ function demoCtrlFn() {
 
   vm.closeGallery = function () {
     vm.open = false;
-  }
+  };
 }
 
 angular.element(document).ready(function() {
