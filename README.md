@@ -2,7 +2,7 @@
 
 AngularJS directive for [PhotoSwipe](http://photoswipe.com/).
 
-Copyright © 2015, [Massimiliano Sartoretto](mailto:massimilianosartoretto@gmail.com)
+Copyright © 2015 - 2016, [Massimiliano Sartoretto](mailto:massimilianosartoretto@gmail.com)
 
 Find me on:
 [![alt text][1.1]][1]
@@ -39,16 +39,18 @@ and use the directive as below:
 ``` html
 <ng-photoswipe
     slides="slides"
-    start-on="{{ bindToSomething || 'eventName' }}"
-    template="'template.html'"
+    open="isOpen"
+    onClose="onGalleryClose()"
+    template="'./myGallery.template.html'"
     options="opts">
 </ng-photoswipe>
 ```
 
 where `slides` is an object describing the images and `options` is an object for the configuration.
 
-The `start-on` attribute tells the directive to listen for the specified event to start the gallery.
-(Helpful to start Photoswipe with a external event).
+The `open` attribute is a scope boolean that start the gallery when truthy.
+
+The `onClose` callback will be called after the gallery closes, not surprising.
 
 You can also provide your own `template` that will override the default one.
 
