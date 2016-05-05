@@ -49,31 +49,24 @@
         var startGallery = function () {
           var pswpElement = document.querySelectorAll('.pswp')[0];
 
-          if (!scope.options.getThumbBoundsFn) {
+          if (angular.isUndefined(scope.options.getThumbBoundsFn)) {
 
             scope.options = {
-              // define gallery index (for URL)
-              galleryUID: pswpElement.getAttribute('data-pswp-uid'),
 
               getThumbBoundsFn: function(index) {
-
-                // find thumbnail element
                 var thumbnail = document.querySelectorAll(scope.slideSelector)[index];
-
-                // get window scroll Y
                 var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-                // optionally get horizontal scroll
-
-                // get position of element relative to viewport
                 var rect = thumbnail.getBoundingClientRect();
-
-                // w = width
                 return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
               }
 
             };
           }
 
+          // define gallery index (for URL)
+          if(angular.isUndefined(scope.options.galleryUID)) {
+            scope.options.galleryUID = iAttrs.ngPhotoswipe;
+          }
 
           scope.gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default || false, scope.slides, scope.options);
           scope.gallery.init();
