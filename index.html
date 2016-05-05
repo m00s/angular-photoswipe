@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Angular PhotoSwipe by m00s</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Angular PhotoSwipe</h1>
+        <p>An angular directive for the PhotoSwipe image gallery</p>
+
+        <p class="view"><a href="https://github.com/m00s/angular-photoswipe">View the Project on GitHub <small>m00s/angular-photoswipe</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/m00s/angular-photoswipe/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/m00s/angular-photoswipe/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/m00s/angular-photoswipe">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>AngularJS directive for <a href="http://photoswipe.com/">PhotoSwipe</a>.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>You can choose your preferred method of installation:</p>
+
+<ul>
+<li>Through bower: <code>bower install ng-photoswipe --save</code>
+</li>
+<li>Through npm: <code>npm install ng-photoswipe --save</code>
+</li>
+<li>Download from github: <a href="https://github.com/m00s/angular-photoswipe/blob/master/angular-photoswipe.min.js">angular-photoswipe.min.js</a>
+</li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Inject <code>ngPhotoswipe</code> module in your application with:</p>
+
+<div class="highlight highlight-source-js"><pre>angular
+  .<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>myApp<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>ngPhotoswipe<span class="pl-pds">'</span></span>])</pre></div>
+
+<p>and use the directive as below:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">ng-photoswipe</span>
+     <span class="pl-e">slides</span>=<span class="pl-s"><span class="pl-pds">"</span>slides<span class="pl-pds">"</span></span>
+     <span class="pl-e">slide-selector</span>=<span class="pl-s"><span class="pl-pds">"</span>.my-awesome-thumbnail<span class="pl-pds">"</span></span>
+     <span class="pl-e">open</span>=<span class="pl-s"><span class="pl-pds">"</span>isOpen<span class="pl-pds">"</span></span>
+     <span class="pl-e">onClose</span>=<span class="pl-s"><span class="pl-pds">"</span>onGalleryClose()<span class="pl-pds">"</span></span>
+     <span class="pl-e">template</span>=<span class="pl-s"><span class="pl-pds">"</span>'./myGallery.template.html'<span class="pl-pds">"</span></span>
+     <span class="pl-e">options</span>=<span class="pl-s"><span class="pl-pds">"</span>opts<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>where <code>slides</code> is an object defining the images, and the <code>slideSelector</code> is a valid <a href="https://www.w3.org/TR/css3-selectors/#selectors">selector</a> to query the gallery images.</p>
+
+<p>The <code>open</code> attribute is a scope boolean that start the gallery when truthy.</p>
+
+<p>The <code>onClose</code> callback will be called after the gallery closes, not surprising.</p>
+
+<p>You can also provide your own <code>template</code> that will override the default one.</p>
+
+<p>(For further infos follow the <a href="http://photoswipe.com/documentation/options.html">Official docs</a>)</p>
+
+<p><strong>NOTE</strong>: If you plan to have multiple galleries in your page, provide a parameter to the <code>ng-photoswipe</code> attribute, that needs to uniquely identify one directive instance.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/m00s">m00s</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
