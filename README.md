@@ -37,14 +37,13 @@ angular
 and use the directive as below:
 
 ``` html
-<ng-photoswipe
-    slides="slides"
-    slide-selector=".my-awesome-thumbnail"
-    open="isOpen"
-    onClose="onGalleryClose()"
-    template="'./myGallery.template.html'"
-    options="opts">
-</ng-photoswipe>
+<div ng-photoswipe
+     slides="slides"
+     slide-selector=".my-awesome-thumbnail"
+     open="isOpen"
+     onClose="onGalleryClose()"
+     template="'./myGallery.template.html'"
+     options="opts"></div>
 ```
 
 where `slides` is an object defining the images, and the `slideSelector` is a valid [selector](https://www.w3.org/TR/css3-selectors/#selectors) to query the gallery images.
@@ -57,8 +56,14 @@ You can also provide your own `template` that will override the default one.
 
 (For further infos follow the [Official docs](http://photoswipe.com/documentation/options.html))
 
+**NOTE**: If you plan to have multiple galleries in your page, provide a parameter to the `ng-photoswipe` attribute, that needs to uniquely identify one directive instance.
+
 Changelog
 ------
+### v0.1.0 (May 05, 2016)
+* Animation support for multiple galleries
+* Fix start animation
+
 ### v0.0.9 (Feb 15, 2016)
 * Add ngTemplates grunt task
 * Fix npm package version
