@@ -1,6 +1,6 @@
 /*
-	angular-photoswipe v0.0.8
-	(c) 2015 Massimiliano Sartoretto <massimilianosartoretto@gmail.com>
+	angular-photoswipe v0.0.9
+	(c) 2016 Massimiliano Sartoretto <massimilianosartoretto@gmail.com>
 	License: MIT
 */
 
@@ -21,12 +21,12 @@
         restrict: 'AE',
         replace: true,
         scope: {
-          slides: '=',
-          options: '=',
-          template: '@',
           open: '=',
-          onClose: '&',
-          extensions:'=?'
+          options: '=',
+          slides: '=',
+          slideSelector: '@',
+          template: '@',
+          onClose: '&'
         },
         link: linkFn
       };
@@ -48,13 +48,40 @@
 
         var startGallery = function () {
           var pswpElement = document.querySelectorAll('.pswp')[0];
+
+          if (!scope.options.getThumbBoundsFn) {
+
+            scope.options = {
+              // define gallery index (for URL)
+              galleryUID: pswpElement.getAttribute('data-pswp-uid'),
+
+              getThumbBoundsFn: function(index) {
+
+                // find thumbnail element
+                var thumbnail = document.querySelectorAll(scope.slideSelector)[index];
+
+                // get window scroll Y
+                var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+                // optionally get horizontal scroll
+
+                // get position of element relative to viewport
+                var rect = thumbnail.getBoundingClientRect();
+
+                // w = width
+                return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+              }
+
+            };
+          }
+
+
           scope.gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default || false, scope.slides, scope.options);
           scope.gallery.init();
           scope.item = scope.gallery.currItem;
 
           scope.gallery.listen('destroy', function () {
             scope.safeApply(function () {
-              scope.onClose();
+              (scope.onClose || angular.noop)();
             });
           });
 
