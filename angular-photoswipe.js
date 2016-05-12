@@ -1,5 +1,5 @@
 /*
-	angular-photoswipe v0.0.9
+	angular-photoswipe v0.1.1
 	(c) 2016 Massimiliano Sartoretto <massimilianosartoretto@gmail.com>
 	License: MIT
 */
@@ -49,9 +49,10 @@
         var startGallery = function () {
           var pswpElement = document.querySelectorAll('.pswp')[0];
 
-          if (angular.isUndefined(scope.options.getThumbBoundsFn)) {
+          if (angular.isUndefined(scope.options.getThumbBoundsFn) &&
+              angular.isDefined(scope.slideSelector)) {
 
-            scope.options = {
+            scope.options = angular.merge({}, {
 
               getThumbBoundsFn: function(index) {
                 var thumbnail = document.querySelectorAll(scope.slideSelector)[index];
@@ -60,12 +61,7 @@
                 return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
               }
 
-            };
-          }
-
-          // define gallery index (for URL)
-          if(angular.isUndefined(scope.options.galleryUID)) {
-            scope.options.galleryUID = iAttrs.ngPhotoswipe;
+            }, scope.options);
           }
 
           scope.gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default || false, scope.slides, scope.options);
