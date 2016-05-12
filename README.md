@@ -56,7 +56,6 @@ You can also provide your own `template` that will override the default one.
 
 (For further infos follow the [Official docs](http://photoswipe.com/documentation/options.html))
 
-**NOTE**: If you plan to have multiple galleries in your page, provide a parameter to the `ng-photoswipe` attribute, that needs to uniquely identify one directive instance.
 
 Changelog
 ------
