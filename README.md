@@ -1,4 +1,4 @@
-# Angular PhotoSwipe [Live Demo](http://m00s.github.io/angular-photoswipe/)
+# Angular PhotoSwipe
 
 AngularJS directive for [PhotoSwipe](http://photoswipe.com/).
 
@@ -59,6 +59,9 @@ You can also provide your own `template` that will override the default one.
 
 Changelog
 ------
+### v0.1.1 (May 12, 2016)
+* Fix overridden opts
+
 ### v0.1.0 (May 05, 2016)
 * Animation support for multiple galleries
 * Fix start animation
