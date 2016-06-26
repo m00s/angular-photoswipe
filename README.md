@@ -41,7 +41,7 @@ and use the directive as below:
      slides="slides"
      slide-selector=".my-awesome-thumbnail"
      open="isOpen"
-     onClose="onGalleryClose()"
+     on-close="onGalleryClose()"
      template="'./myGallery.template.html'"
      options="opts"></div>
 ```
@@ -50,7 +50,7 @@ where `slides` is an object defining the images, and the `slideSelector` is a va
 
 The `open` attribute is a scope boolean that start the gallery when truthy.
 
-The `onClose` callback will be called after the gallery closes, not surprising.
+The `on-close` callback will be called after the gallery closes, not surprising.
 
 You can also provide your own `template` that will override the default one.
 
