@@ -111,9 +111,9 @@
   }
 
   if (typeof define === 'function' && define.amd) {
-		define(['angular', 'Photoswipe'], ngPhotoswipe);
+		define(['angular', 'photoswipe'], ngPhotoswipe);
 	} else if (typeof module !== 'undefined' && module && module.exports) {
-		ngPhotoswipe(angular, require('Photoswipe'));
+		ngPhotoswipe(angular, require('photoswipe'));
 		module.exports = 'ngPhotoswipe';
 	} else {
 		ngPhotoswipe(angular, (typeof global !== 'undefined' ? global : window).Photoswipe);
