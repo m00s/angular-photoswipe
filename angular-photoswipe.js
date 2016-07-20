@@ -1,5 +1,5 @@
 /*
-	angular-photoswipe v0.1.1
+	angular-photoswipe v0.2.0
 	(c) 2016 Massimiliano Sartoretto <massimilianosartoretto@gmail.com>
 	License: MIT
 */
