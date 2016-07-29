@@ -80,14 +80,22 @@
             });
           });
         };
+        
+        scope.$on('$routeChangeStart', function(event, next, current) {
+          if (scope.show === true && scope.gallery) {
+            scope.gallery.close();
+            scope.gallery = null;
+            event.preventDefault();
+            return false;
+          }
+        });
 
         scope.$watch('show', function (nVal, oVal) {
-          console.info('Watch: ', nVal, oVal);
-          if (nVal != oVal) {
-            if (nVal) {
-              startGallery();
-            }
-          } else if (!nVal && scope.gallery) {
+          if (nVal && !oVal) {
+            startGallery();
+            return;
+          }
+          if (!nVal && scope.gallery) {
             scope.gallery.close();
             scope.gallery = null;
           }
