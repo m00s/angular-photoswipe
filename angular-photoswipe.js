@@ -82,6 +82,7 @@
         };
 
         scope.$watch('show', function (nVal, oVal) {
+          console.info('Watch: ', nVal, oVal);
           if (nVal != oVal) {
             if (nVal) {
               startGallery();
