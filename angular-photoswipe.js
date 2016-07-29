@@ -21,7 +21,7 @@
         restrict: 'AE',
         replace: true,
         scope: {
-          open: '=',
+          show: '=',
           options: '=',
           slides: '=',
           slideSelector: '@',
@@ -42,7 +42,7 @@
           });
 
         scope.start = function () {
-          scope.open = true;
+          scope.show = true;
           startGallery();
         };
 
@@ -80,13 +80,22 @@
             });
           });
         };
+        
+        scope.$on('$routeChangeStart', function(event, next, current) {
+          if (scope.show === true && scope.gallery) {
+            scope.gallery.close();
+            scope.gallery = null;
+            event.preventDefault();
+            return false;
+          }
+        });
 
-        scope.$watch('open', function (nVal, oVal) {
-          if (nVal != oVal) {
-            if (nVal) {
-              startGallery();
-            }
-          } else if (!nVal && scope.gallery) {
+        scope.$watch('show', function (nVal, oVal) {
+          if (nVal && !oVal) {
+            startGallery();
+            return;
+          }
+          if (!nVal && scope.gallery) {
             scope.gallery.close();
             scope.gallery = null;
           }
