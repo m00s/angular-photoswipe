@@ -85,10 +85,10 @@
           if (nVal != oVal) {
             if (nVal) {
               startGallery();
+            } else if (!nVal && scope.gallery) {
+              scope.gallery.close();
+              scope.gallery = null;
             }
-          } else if (!nVal && scope.gallery) {
-            scope.gallery.close();
-            scope.gallery = null;
           }
         });
 
