@@ -36,7 +36,7 @@
 
         $http
           .get(scope.template, { cache: $templateCache })
-          .success(function(html) {
+          .then(function(html) {
             var template = angular.element(html);
             iElement.append($compile(template)(scope));
           });
@@ -82,7 +82,7 @@
         };
 
         scope.$watch('open', function (nVal, oVal) {
-          if (nVal != oVal) {
+          if (nVal !== oVal) {
             if (nVal) {
               startGallery();
             }
@@ -94,7 +94,7 @@
 
         scope.safeApply = function(fn) {
           var phase = this.$root.$$phase;
-          if(phase == '$apply' || phase == '$digest') {
+          if(phase === '$apply' || phase === '$digest') {
             if(fn && (typeof(fn) === 'function')) {
               fn();
             }
