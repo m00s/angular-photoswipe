@@ -33,12 +33,14 @@
 
       function linkFn(scope, iElement, iAttrs) {
         scope.template = scope.template || 'views/ng-photoswipe.html';
-
         $http
           .get(scope.template, { cache: $templateCache })
           .then(function(html) {
-            var template = angular.element(html);
+            var template = angular.element(html.data);
             iElement.append($compile(template)(scope));
+          })
+          .catch(function(e){
+            console.log(e);
           });
 
         scope.start = function () {
@@ -85,10 +87,10 @@
           if (nVal !== oVal) {
             if (nVal) {
               startGallery();
+            } else if (!nVal && scope.gallery) {
+              scope.gallery.close();
+              scope.gallery = null;
             }
-          } else if (!nVal && scope.gallery) {
-            scope.gallery.close();
-            scope.gallery = null;
           }
         });
 
