@@ -1,3 +1,8 @@
+# COLLABORATORS WANTED
+Unfortunately I cannot actively contribute and maintain this module anymore.
+
+There seems to be enough interest to keep it going, so if anyone who's using it would like to become a collaborator please [inbox me](mailto:massimilianosartoretto@gmail.com)
+
 # Angular PhotoSwipe
 
 AngularJS directive for [PhotoSwipe](http://photoswipe.com/).
