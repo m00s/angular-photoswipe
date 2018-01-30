@@ -36,8 +36,8 @@
 
         $http
           .get(scope.template, { cache: $templateCache })
-          .success(function(html) {
-            var template = angular.element(html);
+          .then(function(result) {
+            var template = angular.element(result.data);
             iElement.append($compile(template)(scope));
           });
 
