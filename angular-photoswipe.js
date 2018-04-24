@@ -36,13 +36,14 @@
 
         $http
           .get(scope.template, { cache: $templateCache })
-          .then(function(result) {
-            var template = angular.element(result.data);
+          .success(function(html) {
+            var template = angular.element(html);
             iElement.append($compile(template)(scope));
           });
 
         scope.start = function () {
           scope.open = true;
+          scope.options = {};
           startGallery();
         };
 
@@ -52,7 +53,7 @@
           if (angular.isUndefined(scope.options.getThumbBoundsFn) &&
               angular.isDefined(scope.slideSelector)) {
 
-            scope.options = angular.merge({}, {
+            scope.options = angular.merge(scope.options, {
 
               getThumbBoundsFn: function(index) {
                 var thumbnail = document.querySelectorAll(scope.slideSelector)[index];
