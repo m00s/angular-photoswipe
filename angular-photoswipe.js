@@ -43,6 +43,7 @@
 
         scope.start = function () {
           scope.open = true;
+          scope.options = {};
           startGallery();
         };
 
@@ -52,7 +53,7 @@
           if (angular.isUndefined(scope.options.getThumbBoundsFn) &&
               angular.isDefined(scope.slideSelector)) {
 
-            scope.options = angular.merge({}, {
+            scope.options = angular.merge(scope.options, {
 
               getThumbBoundsFn: function(index) {
                 var thumbnail = document.querySelectorAll(scope.slideSelector)[index];
